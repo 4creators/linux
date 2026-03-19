@@ -1612,7 +1612,7 @@ struct d3dkmt_opensyncobjectfromsyncfile {
 };
 
 struct d3dkmt_enumprocesses {
-	struct winluid 		adapter_luid;
+	struct winluid		adapter_luid;
 #ifdef __KERNEL__
 	__u32			*buffer;
 #else

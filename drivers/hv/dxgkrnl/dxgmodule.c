@@ -158,7 +158,7 @@ static void dxg_signal_dma_fence(struct dxghostevent *eventhdr)
 {
 	struct dxgsyncpoint *event = (struct dxgsyncpoint *)eventhdr;
 
-	DXG_TRACE("syncpoint: %px, fence: %lld", event, event->fence_value);
+	DXG_TRACE("syncpoint: %p, fence: %lld", event, event->fence_value);
 	event->fence_value++;
 	list_del(&eventhdr->host_event_list_entry);
 	dma_fence_signal(&event->base);
@@ -788,7 +788,7 @@ static int dxg_probe_vmbus(struct hv_device *hdev,
 		if (dxgglobal->hdev) {
 			/* This device should appear only once */
 			DXG_ERR("global channel already exists");
-			ret = -EBADE;
+			ret = -ENODEV;
 			goto error;
 		}
 		dxgglobal->hdev = hdev;
@@ -969,4 +969,3 @@ module_exit(dxg_drv_exit);
 
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("Microsoft Dxgkrnl virtual compute device Driver");
-MODULE_VERSION("2.0.3");

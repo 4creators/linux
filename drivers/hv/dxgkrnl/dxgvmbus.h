@@ -313,12 +313,12 @@ struct dxgkvmb_command_queryadapterinfo {
 	struct dxgkvmb_command_vgpu_to_host hdr;
 	enum kmtqueryadapterinfotype	query_type;
 	u32				private_data_size;
-	u8				private_data[1];
+	u8				private_data[];
 };
 
 struct dxgkvmb_command_queryadapterinfo_return {
 	struct ntstatus			status;
-	u8				private_data[1];
+	u8				private_data[];
 };
 
 /* Returns ntstatus */
@@ -391,7 +391,7 @@ struct dxgkvmb_command_makeresident {
 	struct d3dkmthandle		paging_queue;
 	struct d3dddi_makeresident_flags flags;
 	u32				alloc_count;
-	struct d3dkmthandle		allocations[1];
+	struct d3dkmthandle		allocations[];
 };
 
 struct dxgkvmb_command_makeresident_return {
@@ -405,7 +405,7 @@ struct dxgkvmb_command_evict {
 	struct d3dkmthandle		device;
 	struct d3dddi_evict_flags	flags;
 	u32				alloc_count;
-	struct d3dkmthandle		allocations[1];
+	struct d3dkmthandle		allocations[];
 };
 
 struct dxgkvmb_command_evict_return {
@@ -476,7 +476,7 @@ struct dxgkvmb_command_updategpuvirtualaddress {
 	struct d3dkmthandle		fence_object;
 	u32				num_operations;
 	u32				flags;
-	struct d3dddi_updategpuvirtualaddress_operation operations[1];
+	struct d3dddi_updategpuvirtualaddress_operation operations[];
 };
 
 struct dxgkvmb_command_queryclockcalibration {
@@ -627,7 +627,7 @@ struct dxgkvmb_command_destroyallocation {
 	struct d3dkmthandle		resource;
 	u32				alloc_count;
 	struct d3dddicb_destroyallocation2flags flags;
-	struct d3dkmthandle		allocations[1];
+	struct d3dkmthandle		allocations[];
 };
 
 struct dxgkvmb_command_createcontextvirtual {
@@ -639,7 +639,7 @@ struct dxgkvmb_command_createcontextvirtual {
 	struct d3dddi_createcontextflags flags;
 	enum d3dkmt_clienthint		client_hint;
 	u32				priv_drv_data_size;
-	u8				priv_drv_data[1];
+	u8				priv_drv_data[];
 };
 
 /* The command returns ntstatus */
@@ -768,7 +768,7 @@ struct dxgkvmb_command_offerallocations {
 	enum d3dkmt_offer_priority	priority;
 	struct d3dkmt_offer_flags	flags;
 	bool				resources;
-	struct d3dkmthandle		allocations[1];
+	struct d3dkmthandle		allocations[];
 };
 
 struct dxgkvmb_command_reclaimallocations {
@@ -778,13 +778,13 @@ struct dxgkvmb_command_reclaimallocations {
 	u32				allocation_count;
 	bool				resources;
 	bool				write_results;
-	struct d3dkmthandle		allocations[1];
+	struct d3dkmthandle		allocations[];
 };
 
 struct dxgkvmb_command_reclaimallocations_return {
 	u64				paging_fence_value;
 	struct ntstatus			status;
-	enum d3dddi_reclaim_result	discarded[1];
+	enum d3dddi_reclaim_result	discarded[];
 };
 
 /* Returns ntstatus */
@@ -804,7 +804,7 @@ struct dxgkvmb_command_createhwqueue {
 	struct d3dkmthandle		context;
 	struct d3dddi_createhwqueueflags flags;
 	u32				priv_drv_data_size;
-	char				priv_drv_data[1];
+	char				priv_drv_data[];
 };
 
 /* The command returns ntstatus */
@@ -833,7 +833,7 @@ struct dxgkvmb_command_escape {
 	struct d3dddi_escapeflags	flags;
 	u32				priv_drv_data_size;
 	struct d3dkmthandle		context;
-	u8				priv_drv_data[1];
+	u8				priv_drv_data[];
 };
 
 struct dxgkvmb_command_queryvideomemoryinfo {
@@ -879,7 +879,7 @@ struct dxgk_feature_desc {
 	struct {
 		u16 supported		: 1;
 		u16 virtualization_mode : 3;
-		u16 global 		: 1;
+		u16 global		: 1;
 		u16 driver_feature	: 1;
 		u16 internal		: 1;
 		u16 reserved		: 9;

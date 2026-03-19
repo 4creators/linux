@@ -9773,7 +9773,7 @@ F:	drivers/mtd/hyperbus/
 F:	include/linux/mtd/hyperbus.h
 
 Hyper-V vGPU DRIVER
-M:	Iouri Tarassov <iourit@microsoft.com>
+M:	Iouri Tarassov <iourit@linux.microsoft.com>
 L:	linux-hyperv@vger.kernel.org
 S:	Supported
 F:	drivers/hv/dxgkrnl/

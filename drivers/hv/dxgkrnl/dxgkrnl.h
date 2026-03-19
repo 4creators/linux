@@ -27,7 +27,6 @@
 #include <linux/pci.h>
 #include <linux/hyperv.h>
 #include <uapi/misc/d3dkmthk.h>
-#include <linux/version.h>
 #include "misc.h"
 #include "hmgr.h"
 #include <uapi/misc/d3dkmthk.h>
@@ -719,7 +718,7 @@ bool dxgresource_is_active(struct dxgresource *res);
 
 struct privdata {
 	u32 data_size;
-	u8 data[1];
+	u8 data[];
 };
 
 struct dxgallocation {
@@ -769,9 +768,9 @@ long dxgk_unlocked_ioctl(struct file *f, unsigned int p1, unsigned long p2);
 
 int dxg_unmap_iospace(void *va, u32 size);
 /*
- * The convention is that VNBus instance id is a GUID, but the host sets
- * the lower part of the value to the host adapter LUID. The function
- * provides the necessary conversion.
+ * The convention is that VMBus instance id is a GUID, but the host sets
+ * the lower part of the value to the host adapter LUID. The cast reads
+ * the first sizeof(winluid) bytes of the GUID as a winluid value.
  */
 static inline void guid_to_luid(guid_t *guid, struct winluid *luid)
 {
@@ -1029,9 +1028,7 @@ void dxgk_validate_ioctls(void);
 #else
 
 #define DXG_TRACE(...)
-#define DXG_ERR(fmt, ...) do {					\
-	dev_err(DXGDEV, "%s: " fmt, __func__, ##__VA_ARGS__);	\
-} while (0)
+#define DXG_ERR(fmt, ...)	dev_err(DXGDEV, "%s: " fmt, __func__, ##__VA_ARGS__)
 
 #endif /* DEBUG */
 

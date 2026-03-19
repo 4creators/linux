@@ -246,9 +246,7 @@ int dxgvmbuschannel_init(struct dxgvmbuschannel *ch, struct hv_device *hdev)
 		goto cleanup;
 	}
 
-#if KERNEL_VERSION(5, 15, 0) <= LINUX_VERSION_CODE
 	hdev->channel->max_pkt_size = DXG_MAX_VM_BUS_PACKET_SIZE;
-#endif
 	ret = vmbus_open(hdev->channel, RING_BUFSIZE, RING_BUFSIZE,
 			 NULL, 0, dxgvmbuschannel_receive, ch);
 	if (ret) {
@@ -1482,9 +1480,8 @@ int create_existing_sysmem(struct dxgdevice *device,
 				   dxgalloc->pages);
 	if (ret1 != npages) {
 		DXG_ERR("get_user_pages_fast failed: %d", ret1);
-		if (ret1 > 0 && ret1 < npages) {
+		if (ret1 > 0 && ret1 < npages)
 			unpin_user_pages(dxgalloc->pages, ret1);
-		}
 		vfree(dxgalloc->pages);
 		dxgalloc->pages = NULL;
 		ret = -ENOMEM;

@@ -136,7 +136,7 @@ void dxgadapter_release(struct kref *refcount)
 	struct dxgadapter *adapter;
 
 	adapter = container_of(refcount, struct dxgadapter, adapter_kref);
-	DXG_TRACE("Destroying adapter: %px", adapter);
+	DXG_TRACE("Destroying adapter: %p", adapter);
 	kfree(adapter);
 }
 
@@ -271,7 +271,7 @@ struct dxgdevice *dxgdevice_create(struct dxgadapter *adapter,
 			kref_put(&device->device_kref, dxgdevice_release);
 			device = NULL;
 		} else {
-			DXG_TRACE("dxgdevice created: %px", device);
+			DXG_TRACE("dxgdevice created: %p", device);
 		}
 	}
 	return device;
@@ -720,7 +720,7 @@ void dxgdevice_release(struct kref *refcount)
 	struct dxgdevice *device;
 
 	device = container_of(refcount, struct dxgdevice, device_kref);
-	DXG_TRACE("Destroying device: %px", device);
+	DXG_TRACE("Destroying device: %p", device);
 	kref_put(&device->adapter->adapter_kref, dxgadapter_release);
 	kfree(device);
 }
@@ -1103,7 +1103,7 @@ cleanup:
 
 void dxgprocess_adapter_remove_device(struct dxgdevice *device)
 {
-	DXG_TRACE("Removing device: %px", device);
+	DXG_TRACE("Removing device: %p", device);
 	mutex_lock(&device->adapter_info->device_list_mutex);
 	if (device->device_list_entry.next) {
 		list_del(&device->device_list_entry);
