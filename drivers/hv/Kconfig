@@ -85,6 +85,8 @@ config MSHV_ROOT
 
 	  If unsure, say N.
 
+source "drivers/hv/dxgkrnl/Kconfig"
+
 config MSHV_VTL
 	tristate "Microsoft Hyper-V VTL driver"
 	depends on X86_64 && HYPERV_VTL_MODE
