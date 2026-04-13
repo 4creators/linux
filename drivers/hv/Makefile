@@ -24,3 +24,4 @@ obj-$(subst m,y,$(CONFIG_MSHV_ROOT)) += hv_proc.o
 ifneq ($(CONFIG_MSHV_ROOT)$(CONFIG_MSHV_VTL),)
 	obj-y += mshv_common.o
 endif
+obj-$(CONFIG_DXGKRNL) += dxgkrnl/
