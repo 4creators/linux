@@ -1,0 +1,5 @@
+kernel.ftrace = nop
+kernel.trace_event = "module:module_request,module:module_put,module:module_get,module:module_free,module:module_load"
+kernel.tp_printk
+kernel.trace_buf_size = 32M
+kernel.dyndbg="func fill_kobj_path +pmfl;func *_init +pmfl;func *_probe* +pmfl;func *bind_device* +pmfl;func *_add_device* +pmfl;func *bind_driver* +pmfl;file drivers/base/dd.c +pmfl;file init/main.c +pmfl"
