@@ -1,0 +1,12 @@
+| SHA1 | Name |
+| :--- | :--- |
+| 953983cf471087be19749e497e6db10a4613692f | wsl: config additions for 6.18 |
+| 2faecb73204ade314593b7f35e40face57b6a9e2 | Hyper-V: ARM64: Always use the Hyper-V hypercall interface |
+| ab7a9421518cde95a2f3742fc6c4786dbf35c053 | x86/hyperv: Don’t enable TSCInvariant on some older Hyper-V hosts |
+| 1ed142e18380550d4c21093e811c330478c12178 | WSL: Add a script to generate modules.vhdx |
+| 75e82a51c2ec99daae7a0386162fd273197522f6 | hv: dxgkrnl: Add Microsoft Paravirtualized GPU support |
+| 2e488103611d743958b601e68bb625d1157e8dcb | doc: wsl: Fix qemu-img format casing in README.md |
+| d63b0d767a8c44c38c595cf3aced17e95830f713 | fuse: mark DAX inode releases as blocking |
+| 8027f790a5c76a26875542ff903da4a7b0a7f351 | wsl: Add Microsoft config links |
+| bbf0ccdc0b980ae93d7da28d74b190fd322649ef | arm64: hyperv: Enable Hyper-V synthetic clocks/timers |
+| 302853473c86ce39362b899aefbe5bae09c9f6bc | arm64: hyperv: Fix build breakage for non-ARM64 architectures |
